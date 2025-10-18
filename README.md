@@ -1,4 +1,4 @@
-# Database Schema Overview
+# Database Schema 
 
 This database schema supports storing user text inputs and corresponding sentiment analysis results. 
 
