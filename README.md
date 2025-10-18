@@ -1,4 +1,4 @@
-# Overview
+# Database Schema Overview
 
 This database schema supports storing user text inputs and corresponding sentiment analysis results. 
 
@@ -30,3 +30,30 @@ Stores the sentiment analysis results for each request.
 | **analyzed_at** | `TIMESTAMP` | Timestamp when the sentiment analysis was performed |
 
 ---
+
+# Setup
+## Install MySQL 
+
+```bash
+gcloud compute ssh mysql-vm --zone=us-central1-a
+sudo apt update && sudo apt upgrade -y
+sudo apt install -y mysql-server
+sudo mysql_secure_installation
+```
+
+## Configure for Remote Access
+
+### Edit MySQL configuration
+```bash
+sudo nano /etc/mysql/mysql.conf.d/mysqld.cnf
+// Update bind-address = 127.0.0.1 to bind-address = 0.0.0.0
+sudo systemctl restart mysql
+```
+### Configure Firewall
+```bash
+gcloud compute firewall-rules create allow-mysql-cloud \
+    --allow=tcp:3306 \
+    --target-tags=mysql-server \
+    --source-ranges=10.12.0.15/32 \
+    --description="Allow MySQL access for other VMs"
+```
