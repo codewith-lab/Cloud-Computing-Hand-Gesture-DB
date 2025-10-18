@@ -57,3 +57,6 @@ gcloud compute firewall-rules create allow-mysql-cloud \
     --source-ranges=10.12.0.15/32 \
     --description="Allow MySQL access for other VMs"
 ```
+
+# Test
+<img width="662" height="206" alt="Screenshot 2025-10-18 at 10 28 49 AM" src="https://github.com/user-attachments/assets/162b029b-0221-4b94-b4b8-3a7f92fa3512" />
