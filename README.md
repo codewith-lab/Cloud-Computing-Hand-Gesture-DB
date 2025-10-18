@@ -40,16 +40,17 @@ sudo apt update && sudo apt upgrade -y
 sudo apt install -y mysql-server
 sudo mysql_secure_installation
 ```
+---
 
 ## Configure for Remote Access
 
-### Edit MySQL configuration
+#### Edit MySQL configuration
 ```bash
 sudo nano /etc/mysql/mysql.conf.d/mysqld.cnf
 // Update bind-address = 127.0.0.1 to bind-address = 0.0.0.0
 sudo systemctl restart mysql
 ```
-### Configure Firewall
+#### Configure Firewall
 ```bash
 gcloud compute firewall-rules create allow-mysql-cloud \
     --allow=tcp:3306 \
@@ -57,6 +58,7 @@ gcloud compute firewall-rules create allow-mysql-cloud \
     --source-ranges=10.12.0.15/32 \
     --description="Allow MySQL access for other VMs"
 ```
+---
 
 # Test
 <img width="662" height="206" alt="Screenshot 2025-10-18 at 10 28 49 AM" src="https://github.com/user-attachments/assets/162b029b-0221-4b94-b4b8-3a7f92fa3512" />
